@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to prompt user and get their input
+void prompt(const char *message, char *response) {
+    printf("%s\n", message);
+    fgets(response, 100, stdin);
+    response[strcspn(response, "\n")] = 0; // Remove trailing newline
+}
+
+int main() {
+    char categories[100];
+    char framework[100];
+    char experience[100];
+    char response[100];
+
+    // Introduction
+    printf("Let's develop an image tagging solution!\n");
+    printf("What kind of images do you want to classify? (e.g., cats, dogs, cars)\n");
+    prompt("", categories);
+
+    // Dataset availability
+    printf("Great choice! We'll classify images into %s.\n", categories);
+    prompt("Do you have a dataset for training? (YES/NO)", response);
+
+    if (strcmp(response, "YES") == 0) {
+        printf("Awesome! Having a dataset will speed up our process.\n");
+    } else if (strcmp(response, "NO") == 0) {
+        printf("No worries! We can discuss how to obtain or generate a dataset.\n");
+    }
+
+    // Framework preference
+    printf("Do you prefer using TensorFlow or PyTorch for building the model?\n");
+    prompt("", framework);
+    printf("Perfect! We'll use %s for developing the model.\n", framework);
+
+    // ML experience
+    printf("Let's proceed with training the model.\n");
+    printf("Are you familiar with concepts like data preprocessing, model architecture, and training?\n");
+    prompt("", experience);
+
+    printf("That's okay! We'll guide you through the process.\n");
+
+    // Further discussion based on user's familiarity
+    // More prompts and logic would follow here
+
+    return 0;
+}
